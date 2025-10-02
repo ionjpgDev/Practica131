@@ -6,8 +6,62 @@ import java.util.Locale;
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
     public static void main(String[] args) {
+        // A)
+        System.out.println("A)");
+        PilaC pilaA1 = new PilaC();
+        pilaA1.adicionar("A");
+        pilaA1.adicionar("B");
+        pilaA1.adicionar("B");
+        pilaA1.adicionar("A");
 
+        PilaC pilaA2 = new PilaC();
+        pilaA2.adicionar("X");
+        pilaA2.adicionar("Y");
+        pilaA2.adicionar("X");
 
+        solucionA(pilaA1, pilaA2);
+
+        // B)
+        System.out.println("B)");
+        PilaC pilaB = new PilaC();
+        pilaB.adicionar("A");
+        pilaB.adicionar("B");
+        pilaB.adicionar("A");
+        pilaB.adicionar("C");
+        pilaB.adicionar("A");
+
+        String buscar = "A";
+        int resultadoB = solucionB(pilaB, buscar);
+        System.out.println("La letra '" + buscar + "' aparece " + resultadoB + " veces");
+
+        // C)
+        System.out.println("C)");
+        PilaC pilaC1 = new PilaC();
+        pilaC1.adicionar("A");
+        pilaC1.adicionar("B");
+        pilaC1.adicionar("E");
+        pilaC1.adicionar("C");
+
+        boolean resultadoC1 = solucionC(pilaC1);
+        System.out.println("Es intercalado? " + resultadoC1);
+
+        PilaC pilaC2 = new PilaC();
+        pilaC2.adicionar("A");
+        pilaC2.adicionar("E");
+        pilaC2.adicionar("B");
+
+        boolean resultadoC2 = solucionC(pilaC2);
+        System.out.println("es intercalado? " + resultadoC2);
+
+        // D)
+        System.out.println("D)");
+        PilaC pilaD = new PilaC();
+        pilaD.adicionar("1");
+        pilaD.adicionar("2");
+        pilaD.adicionar("3");
+        pilaD.adicionar("4");
+
+        solucionD(pilaD);
     }
 
     public static void solucionA(PilaC A, PilaC B) {
@@ -54,7 +108,7 @@ public class Main {
         int cont = 0;
         while (!A.esVacia()) {
             String a = A.eliminar();
-            if (a == x) {
+            if (a.equals(x)) {
                 cont++;
             }
             aux.adicionar(a);
@@ -72,27 +126,30 @@ public class Main {
         boolean flag = true;
         Boolean anterior = null;
         Boolean actual = null;
-        PilaC aux=new PilaC();
+        PilaC aux = new PilaC();
         while (!A.esVacia()) {
             String a = A.eliminar();
             aux.adicionar(a);
             actual = esVocal(a);
-            if (flag) {
-                if (anterior == null) anterior = actual;
-                else if (anterior==actual) {
-                    flag=false;
+            if (anterior == null) {
+                anterior = actual;
+            } else {
+                if (anterior == actual) {
+                    flag = false;
                 }
+                anterior = actual;
             }
         }
         A.vaciar(aux);
         return flag;
     }
+
     public static void solucionD(PilaC A){
-        String cad="";
+        String cad = "";
         System.out.println("Antes");
         A.mostrar();
-        PilaC aux=new PilaC();
-        PilaC aux1=new PilaC();
+        PilaC aux = new PilaC();
+        PilaC aux1 = new PilaC();
         aux.vaciar(A);
         aux1.vaciar(aux);
         A.vaciar(aux1);
