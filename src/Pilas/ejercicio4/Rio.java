@@ -2,9 +2,9 @@ package Pilas.ejercicio4;
 
 public class Rio {
     private String nombre,municipio;
-    private int alturaActual, alturaNormal;
+    private double alturaActual, alturaNormal;
 
-    public Rio(String nombre, String municipio, int alturaActual, int alturaNormal) {
+    public Rio(String nombre, String municipio, double alturaActual, double alturaNormal) {
         this.nombre = nombre;
         this.municipio = municipio;
         this.alturaActual = alturaActual;
@@ -27,19 +27,19 @@ public class Rio {
         this.municipio = municipio;
     }
 
-    public int getAlturaActual() {
+    public double getAlturaActual() {
         return alturaActual;
     }
 
-    public void setAlturaActual(int alturaActual) {
+    public void setAlturaActual(double alturaActual) {
         this.alturaActual = alturaActual;
     }
 
-    public int getAlturaNormal() {
+    public double getAlturaNormal() {
         return alturaNormal;
     }
 
-    public void setAlturaNormal(int alturaNormal) {
+    public void setAlturaNormal(double alturaNormal) {
         this.alturaNormal = alturaNormal;
     }
 
